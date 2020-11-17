@@ -1,0 +1,29 @@
+﻿<mah:MetroWindow x:Class="Baal.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:viewModels="clr-namespace:Baal.ViewModels"
+                 xmlns:local="clr-namespace:Baal"
+                 mc:Ignorable="d"
+                 WindowStartupLocation="CenterScreen"
+                 Title="Baal" TitleAlignment="Center" TitleCharacterCasing="Normal"
+                 Height="450" Width="800">
+    <mah:MetroWindow.DataContext>
+        <viewModels:MainViewModel/>
+    </mah:MetroWindow.DataContext>
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands ShowLastSeparator="False">
+            <Button x:Name="connectBtn" Content="Connection"/>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+    <mah:MetroTabControl>
+        <mah:MetroTabItem Header="Modules">
+        </mah:MetroTabItem>
+        <mah:MetroTabItem Header="SPRX">
+        </mah:MetroTabItem>
+        <mah:MetroTabItem Header="EBOOTS">
+        </mah:MetroTabItem>
+    </mah:MetroTabControl>
+</mah:MetroWindow>
