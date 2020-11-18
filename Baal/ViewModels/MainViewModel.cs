@@ -84,49 +84,46 @@ namespace Baal.ViewModels
 
         public static void CreateDirectory()
         {
-            if (!Directory.Exists("SPRX"))
+			if (!Directory.Exists("Files"))
             {
-                Directory.CreateDirectory(@"SPRX\Advanced Warfare");
-                Directory.CreateDirectory(@"SPRX\Battlefield 3");
-                Directory.CreateDirectory(@"SPRX\Battlefield 4");
-                Directory.CreateDirectory(@"SPRX\Battlefield Hardline");
-                Directory.CreateDirectory(@"SPRX\Black Ops 1");
-                Directory.CreateDirectory(@"SPRX\Black Ops 2");
-                Directory.CreateDirectory(@"SPRX\Black Ops 3");
-                Directory.CreateDirectory(@"SPRX\Ghosts");
-                Directory.CreateDirectory(@"SPRX\GTA IV");
-                Directory.CreateDirectory(@"SPRX\GTA V");
-                Directory.CreateDirectory(@"SPRX\Minecraft");
-                Directory.CreateDirectory(@"SPRX\Modern Warfare 1");
-                Directory.CreateDirectory(@"SPRX\Modern Warfare 2");
-                Directory.CreateDirectory(@"SPRX\Modern Warfare 3");
-                Directory.CreateDirectory(@"SPRX\World at War");
-            }
-            if (!Directory.Exists("EBOOTS"))
-            {
-                Directory.CreateDirectory(@"EBOOTS\Advanced Warfare\MP");
-                Directory.CreateDirectory(@"EBOOTS\Advanced Warfare\ZM");
-                Directory.CreateDirectory(@"EBOOTS\Battlefield 3\MP");
-                Directory.CreateDirectory(@"EBOOTS\Battlefield 4\MP");
-                Directory.CreateDirectory(@"EBOOTS\Battlefield Hardline\MP");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 1\MP");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 1\ZM");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 2\MP");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 2\ZM");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 3\MP");
-                Directory.CreateDirectory(@"EBOOTS\Black Ops 3\ZM");
-                Directory.CreateDirectory(@"EBOOTS\Ghosts\MP");
-                Directory.CreateDirectory(@"EBOOTS\Ghosts\SP");
-                Directory.CreateDirectory(@"EBOOTS\GTA IV\MP");
-                Directory.CreateDirectory(@"EBOOTS\GTA V\MP");
-                Directory.CreateDirectory(@"EBOOTS\Minecraft\MP");
-                Directory.CreateDirectory(@"EBOOTS\Modern Warfare 1\MP");
-                Directory.CreateDirectory(@"EBOOTS\Modern Warfare 2\MP");
-                Directory.CreateDirectory(@"EBOOTS\Modern Warfare 2\SP");
-                Directory.CreateDirectory(@"EBOOTS\Modern Warfare 3\MP");
-                Directory.CreateDirectory(@"EBOOTS\Modern Warfare 3\SP");
-                Directory.CreateDirectory(@"EBOOTS\World at War\MP");
-                Directory.CreateDirectory(@"EBOOTS\World at War\ZM");
+                Directory.CreateDirectory(@"Files\SPRX\Advanced Warfare");
+                Directory.CreateDirectory(@"Files\SPRX\Battlefield 3");
+                Directory.CreateDirectory(@"Files\SPRX\Battlefield 4");
+                Directory.CreateDirectory(@"Files\SPRX\Battlefield Hardline");
+                Directory.CreateDirectory(@"Files\SPRX\Black Ops 1");
+                Directory.CreateDirectory(@"Files\SPRX\Black Ops 2");
+                Directory.CreateDirectory(@"Files\SPRX\Black Ops 3");
+                Directory.CreateDirectory(@"Files\SPRX\Ghosts");
+                Directory.CreateDirectory(@"Files\SPRX\GTA IV");
+                Directory.CreateDirectory(@"Files\SPRX\GTA V");
+                Directory.CreateDirectory(@"Files\SPRX\Minecraft");
+                Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 1");
+                Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 2");
+                Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 3");
+                Directory.CreateDirectory(@"Files\SPRX\World at War");
+                Directory.CreateDirectory(@"Files\EBOOTS\Advanced Warfare\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Advanced Warfare\ZM");
+                Directory.CreateDirectory(@"Files\EBOOTS\Battlefield 3\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Battlefield 4\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Battlefield Hardline\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 1\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 1\ZM");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 2\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 2\ZM");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 3\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 3\ZM");
+                Directory.CreateDirectory(@"Files\EBOOTS\Ghosts\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Ghosts\SP");
+                Directory.CreateDirectory(@"Files\EBOOTS\GTA IV\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\GTA V\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Minecraft\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 1\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 2\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 2\SP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 3\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 3\SP");
+                Directory.CreateDirectory(@"Files\EBOOTS\World at War\MP");
+                Directory.CreateDirectory(@"Files\EBOOTS\World at War\ZM");
             }
         }
 

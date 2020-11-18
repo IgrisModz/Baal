@@ -31,7 +31,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <DataGrid x:Name="ModulesList" Margin="3" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2"
-                  AutoGenerateColumns="False" SelectionMode="Single" ItemsSource="{Binding Modules}">
+                  AutoGenerateColumns="False" SelectionMode="Single"
+                  CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
+                  CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
+                  ItemsSource="{Binding Modules}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1.5*" Header="Module" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="1*" Header="ID" Binding="{Binding ID}"/>

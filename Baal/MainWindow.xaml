@@ -37,6 +37,95 @@
             <mah:MetroTabItem x:Name="ModulesTabItem" Header="Modules" Content="{Binding ModulesView}"/>
             <mah:MetroTabItem x:Name="SPRXTabItem" Header="SPRX" Content="{Binding SprxView}"/>
             <mah:MetroTabItem x:Name="EBOOTSTabItem" Header="EBOOTS" Content="{Binding EbootsView}"/>
+            <mah:MetroTabItem x:Name="CreditsTabItem" Header="Credits">
+                <DockPanel>
+                    <Grid DockPanel.Dock="Top">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Text="Thanks to:" FontSize="16"/>
+                        <TextBlock Grid.Row="1">
+                        <StackPanel>
+                                <TextBlock x:Name="MeCredit" Text="Me (for Improve Modules Code and all)"/>
+                                <TextBlock x:Name="SonyCredit" Text="Sony (TMAPI)"/>
+                        </StackPanel>
+                    </TextBlock>
+                        <TextBlock Grid.Row="2" Text="How to use:" FontSize="16"/>
+                        <TextBlock Grid.Row="3" x:Name="HowToUseText">
+                        <StackPanel>
+                            <TextBlock Text="If you don't have DEX this tool is useless" FontSize="14" FontWeight="SemiBold"/>
+                            <TextBlock Text="Put a debug eboot in your game (Otherwise you'll not be able to connect to ps3)"/>
+                            <TextBlock Text="Launch your game"/>
+                            <TextBlock Text="(In tool)"/>
+                            <TextBlock Text="Connect to your ps3"/>
+                            <TextBlock Text="Browse an sprx on your pc or ps3"/>
+                            <TextBlock Text="Load the selected sprx in the game"/>
+                            <TextBlock Text="Enjoy!!!"/>
+                        </StackPanel>
+                    </TextBlock>
+                        <TextBlock Grid.Row="4" FontSize="16" FontWeight="SemiBold" Text="PS:"/>
+                        <TextBlock Grid.Row="5" x:Name="PSText" Text="For EBOOT Upload, you needed restart the game"/>
+                    </Grid>
+                    <Grid DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <UniformGrid Grid.Column="0" Columns="3" Rows="1">
+                                <TextBlock HorizontalAlignment="Center">
+                                    <Hyperlink TextDecorations="{x:Null}" NavigateUri="https://www.youtube.com/channel/UCMiXEu7r1VgyYr_M6-FJVAA" RequestNavigate="Hyperlink_RequestNavigate">
+                                        <StackPanel Orientation="Horizontal">
+                                            <iconPacks:PackIconFontAwesome Margin="3" Kind="YoutubeBrands"/>
+                                            <TextBlock Margin="3" Text="Igris Modz"/>
+                                        </StackPanel>
+                                    </Hyperlink>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Center">
+                                    <Hyperlink TextDecorations="{x:Null}" NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate">
+                                        <StackPanel Orientation="Horizontal">
+                                            <iconPacks:PackIconFontAwesome Margin="3" Kind="SkypeBrands"/>
+                                            <TextBlock Margin="3" Text="DarknModder"/>
+                                        </StackPanel>
+                                    </Hyperlink>
+                                </TextBlock>
+                                <TextBlock HorizontalAlignment="Center">
+                                <Hyperlink TextDecorations="{x:Null}" NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <StackPanel Orientation="Horizontal">
+                                        <iconPacks:PackIconFontAwesome Margin="3" Kind="DiscordBrands"/>
+                                        <TextBlock Margin="3" Text="Igris#2121"/>
+                                    </StackPanel>
+                                </Hyperlink>
+                            </TextBlock>
+                        </UniformGrid>
+                        <UniformGrid Grid.Row="1" Columns="2" Rows="1">
+                            <TextBlock HorizontalAlignment="Center">
+                                <Hyperlink TextDecorations="{x:Null}" NavigateUri="https://www.facebook.com/madaracyril.uchiha" RequestNavigate="Hyperlink_RequestNavigate">
+                                    <StackPanel Orientation="Horizontal">
+                                        <iconPacks:PackIconFontAwesome Margin="3" Kind="FacebookSquareBrands"/>
+                                        <TextBlock Margin="3" Text="CSharp Exploit"/>
+                                    </StackPanel>
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock HorizontalAlignment="Center">
+                                <Hyperlink TextDecorations="{x:Null}" NavigateUri="https://www.instagram.com/IgrisModz/" RequestNavigate="Hyperlink_RequestNavigate">
+                                        <StackPanel Orientation="Horizontal">
+                                            <iconPacks:PackIconFontAwesome Margin="3" Kind="InstagramBrands"/>
+                                        <TextBlock Margin="3" Text="Igris Modz"/>
+                                    </StackPanel>
+                                </Hyperlink>
+                            </TextBlock>
+                        </UniformGrid>
+                    </Grid>
+                </DockPanel>
+            </mah:MetroTabItem>
         </mah:MetroTabControl>
         <StatusBar Grid.Row="1">
             <StatusBarItem x:Name="StatusItem" Content="{Binding Status}"/>

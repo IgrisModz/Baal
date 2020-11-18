@@ -2,7 +2,10 @@
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using System;
+using System.Diagnostics;
+using System.Windows;
 using System.Windows.Media;
+using System.Windows.Navigation;
 using System.Windows.Threading;
 
 namespace Baal
@@ -20,10 +23,11 @@ namespace Baal
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromSeconds(0.001)
+                Interval = TimeSpan.FromSeconds(0.01)
             };
             timer.Tick += Timer_Tick;
             timer.Start();
+            Application.Current.Resources["MahApps.Brushes.IdealForeground"] = new SolidColorBrush(Color.FromArgb(255, 0, 0, 0));
         }
 
         public MainViewModel ViewModel { get => DataContext as MainViewModel; set => DataContext = value; }
@@ -59,11 +63,23 @@ namespace Baal
             else RainbowTick++;
             Color Rainbow = ColorFromHSV(RainbowTick, 1, 1);
             SolidColorBrush brush = new SolidColorBrush(Rainbow);
-            //DukezCredit.Foreground = brush;
-            //MeCredit.Foreground = brush;
-            //SonyCredit.Foreground = brush;
-            //HowToUseText.Foreground = brush;
-            //PSText.Foreground = brush;
+            Application.Current.Resources["MahApps.Brushes.AccentBase"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Accent"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Accent2"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Accent3"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Accent4"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Highlight"] = brush;
+            Application.Current.Resources["MahApps.Brushes.WindowTitle"] = brush;
+            MeCredit.Foreground = brush;
+            SonyCredit.Foreground = brush;
+            HowToUseText.Foreground = brush;
+            PSText.Foreground = brush;
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
     }
 }
