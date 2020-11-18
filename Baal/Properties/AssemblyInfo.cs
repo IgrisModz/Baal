@@ -8,12 +8,12 @@ using System.Windows;
 // l'ensemble d'attributs suivant. Pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("Baal")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("SPRX Loader PS3 (TMAPI Only)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Igris Production")]
 [assembly: AssemblyProduct("Baal")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Igris Prod. Copyright ©  2020")]
+[assembly: AssemblyTrademark("Igris Prod.")]
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
