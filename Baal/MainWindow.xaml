@@ -4,26 +4,43 @@
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
                  xmlns:viewModels="clr-namespace:Baal.ViewModels"
                  xmlns:local="clr-namespace:Baal"
                  mc:Ignorable="d"
+                 dialog:DialogParticipation.Register="{Binding}"
                  WindowStartupLocation="CenterScreen"
                  Title="Baal" TitleAlignment="Center" TitleCharacterCasing="Normal"
-                 Height="450" Width="800">
-    <mah:MetroWindow.DataContext>
-        <viewModels:MainViewModel/>
-    </mah:MetroWindow.DataContext>
+                 Height="500" Width="700">
+    <mah:MetroWindow.Resources>
+        <Style TargetType="{x:Type mah:MetroTabItem}">
+            <Setter Property="mah:HeaderedControlHelper.HeaderFontSize" Value="14"/>
+        </Style>
+    </mah:MetroWindow.Resources>
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands ShowLastSeparator="False">
-            <Button x:Name="connectBtn" Content="Connection"/>
+            <Button x:Name="ConnectBtn" Command="{Binding ConnectCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterialDesign x:Name="ConnectButtonIcon" Kind="CastConnected"/>
+                    <TextBlock x:Name="ConnectButtonText" Margin="3 0 0 0" Text="Connection"/>
+                </StackPanel>
+            </Button>
         </mah:WindowCommands>
     </mah:MetroWindow.LeftWindowCommands>
-    <mah:MetroTabControl>
-        <mah:MetroTabItem Header="Modules">
-        </mah:MetroTabItem>
-        <mah:MetroTabItem Header="SPRX">
-        </mah:MetroTabItem>
-        <mah:MetroTabItem Header="EBOOTS">
-        </mah:MetroTabItem>
-    </mah:MetroTabControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <mah:MetroTabControl Grid.Row="0">
+            <mah:MetroTabItem x:Name="ModulesTabItem" Header="Modules" Content="{Binding ModulesView}"/>
+            <mah:MetroTabItem x:Name="SPRXTabItem" Header="SPRX" Content="{Binding SprxView}"/>
+            <mah:MetroTabItem x:Name="EBOOTSTabItem" Header="EBOOTS" Content="{Binding EbootsView}"/>
+        </mah:MetroTabControl>
+        <StatusBar Grid.Row="1">
+            <StatusBarItem x:Name="StatusItem" Content="{Binding Status}"/>
+            <StatusBarItem x:Name="CreatorItem" HorizontalAlignment="Right" Content="Created by Igris Modz"/>
+        </StatusBar>
+    </Grid>
 </mah:MetroWindow>

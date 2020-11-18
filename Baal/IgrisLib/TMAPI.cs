@@ -410,6 +410,11 @@ namespace IgrisLib
             }
         }
 
+        public bool GetAttached()
+        {
+            return !string.IsNullOrEmpty(Ext.ReadString(0x10000));
+        }
+
         public PS3TMAPI.TCPIPConnectProperties GetConnectionInfo()
         {
             try
