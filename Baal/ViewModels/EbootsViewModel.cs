@@ -190,7 +190,7 @@ namespace Baal.ViewModels
             if (!string.IsNullOrEmpty(EBOOTPath))
             {
                 string sourcePath = EBOOTPath;
-                string targetPath = $@"EBOOTS\{SelectedGame}\{SelectedMode}\";
+                string targetPath = $@"Files\EBOOTS\{SelectedGame}\{SelectedMode}\";
                 string fileName = Path.GetFileName(sourcePath);
                 if (!Directory.Exists(targetPath))
                 {

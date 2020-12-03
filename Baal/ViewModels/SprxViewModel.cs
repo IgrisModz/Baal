@@ -165,7 +165,7 @@ namespace Baal.ViewModels
             if (!string.IsNullOrEmpty(SPRXPath))
             {
                 string sourcePath = SPRXPath;
-                string targetPath = $@"SPRX\{SelectedGame}\";
+                string targetPath = $@"Files\SPRX\{SelectedGame}\";
                 string fileName = Path.GetFileName(sourcePath);
                 if (!Directory.Exists(targetPath))
                 {

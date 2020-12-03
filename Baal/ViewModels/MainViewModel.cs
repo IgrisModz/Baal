@@ -14,6 +14,8 @@ namespace Baal.ViewModels
 
         public TMAPI PS3 { get; }
 
+        internal PS3RPC PS3RPC { get; }
+
         public Thread BackgroundFunctionsThread { get; }
 
         public ModulesView ModulesView { get => GetValue(() => ModulesView); set => SetValue(() => ModulesView, value); }
@@ -36,6 +38,7 @@ namespace Baal.ViewModels
         {
             dialogCoordinator = instance;
             PS3 = new TMAPI();
+            PS3RPC = new PS3RPC(PS3);
             ModulesView = new ModulesView(this, PS3);
             SprxView = new SprxView(this);
             EbootsView = new EbootsView(this, PS3);

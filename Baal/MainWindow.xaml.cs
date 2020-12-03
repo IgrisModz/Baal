@@ -23,7 +23,7 @@ namespace Baal
             InitializeComponent();
             DispatcherTimer timer = new DispatcherTimer
             {
-                Interval = TimeSpan.FromSeconds(0.01)
+                Interval = TimeSpan.FromSeconds(0.001)
             };
             timer.Tick += Timer_Tick;
             timer.Start();
@@ -63,13 +63,16 @@ namespace Baal
             else RainbowTick++;
             Color Rainbow = ColorFromHSV(RainbowTick, 1, 1);
             SolidColorBrush brush = new SolidColorBrush(Rainbow);
-            Application.Current.Resources["MahApps.Brushes.AccentBase"] = brush;
             Application.Current.Resources["MahApps.Brushes.Accent"] = brush;
             Application.Current.Resources["MahApps.Brushes.Accent2"] = brush;
             Application.Current.Resources["MahApps.Brushes.Accent3"] = brush;
             Application.Current.Resources["MahApps.Brushes.Accent4"] = brush;
             Application.Current.Resources["MahApps.Brushes.Highlight"] = brush;
             Application.Current.Resources["MahApps.Brushes.WindowTitle"] = brush;
+            Application.Current.Resources["MahApps.Brushes.WindowTitle.NonActive"] = brush;
+            Application.Current.Resources["MahApps.Brushes.Border.NonActive"] = brush;
+            Application.Current.Resources["MahApps.Brushes.DataGrid.Selection.Background"] = brush;
+            Application.Current.Resources["MahApps.Brushes.DataGrid.Selection.Background.MouseOver"] = brush;
             MeCredit.Foreground = brush;
             SonyCredit.Foreground = brush;
             HowToUseText.Foreground = brush;
