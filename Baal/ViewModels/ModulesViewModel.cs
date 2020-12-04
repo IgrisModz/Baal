@@ -4,6 +4,7 @@ using IgrisLib.Mvvm;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Threading;
 
 namespace Baal.ViewModels
@@ -18,6 +19,8 @@ namespace Baal.ViewModels
 
         public ObservableCollection<PS3Module> Modules { get => GetValue(() => Modules); set => SetValue(() => Modules, value); }
 
+        public PS3Module SelectedModule { get => GetValue(() => SelectedModule); set => SetValue(() => SelectedModule, value); }
+
         public string SPRXPath { get => GetValue(() => SPRXPath); set => SetValue(() => SPRXPath, value); }
 
         public DelegateCommand BrowseSPRXCommand { get; }
@@ -25,6 +28,8 @@ namespace Baal.ViewModels
         public DelegateCommand LoadSPRXCommand { get; }
 
         public DelegateCommand RefreshModulesCommand { get; }
+
+        public DelegateCommand UnloadModuleCommand { get; }
 
         public ModulesViewModel(IDialogCoordinator instance, MainViewModel mainViewModel, TMAPI ps3)
         {
@@ -34,6 +39,7 @@ namespace Baal.ViewModels
             BrowseSPRXCommand = new DelegateCommand(BrowseSPRX);
             LoadSPRXCommand = new DelegateCommand(LoadSPRX, CanExecuteLoadSPRX);
             RefreshModulesCommand = new DelegateCommand(RefreshModules, CanExecuteRefreshModules);
+            UnloadModuleCommand = new DelegateCommand(UnloadModule, CanExecuteUnloadModule);
             SPRXPath = "/dev_hdd0/tmp/module.sprx";
         }
 
@@ -50,6 +56,11 @@ namespace Baal.ViewModels
         private bool CanExecuteRefreshModules()
         {
             return MainViewModel.IsAttached;
+        }
+
+        private bool CanExecuteUnloadModule()
+        {
+            return MainViewModel.IsAttached && SelectedModule != null;
         }
 
         private void BrowseSPRX()
@@ -95,6 +106,18 @@ namespace Baal.ViewModels
                 }
             }
             Modules = modules;
+        }
+
+        private async void UnloadModule()
+        {
+            uint.TryParse(SelectedModule.ID.Substring(2), NumberStyles.HexNumber,
+                    CultureInfo.CurrentCulture,
+                    out uint result);
+            ulong error = PS3RPC.UnloadModule(result);
+            Thread.Sleep(150);
+            RefreshModules();
+            if (error != 0x0)
+                await dialogCoordinator.ShowMessageAsync(this, "Error...", $"Unload Module Error: 0x{error:X}");
         }
     }
 }

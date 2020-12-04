@@ -197,7 +197,7 @@ namespace Baal.ViewModels
 
         private void SelectSPRX()
         {
-            MainViewModel.ModulesView.ViewModel.SPRXPath = $@"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\{SelectedSprx.Path}";
+            MainViewModel.ModulesView.ViewModel.SPRXPath = SelectedSprx.Path;
         }
     }
 }

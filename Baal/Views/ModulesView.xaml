@@ -34,7 +34,7 @@
                   AutoGenerateColumns="False" SelectionMode="Single"
                   CanUserAddRows="False" CanUserDeleteRows="False" CanUserResizeRows="False"
                   CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False"
-                  ItemsSource="{Binding Modules}">
+                  ItemsSource="{Binding Modules}" SelectedItem="{Binding SelectedModule}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="1.5*" Header="Module" Binding="{Binding Name}"/>
                 <DataGridTextColumn Width="1*" Header="ID" Binding="{Binding ID}"/>
@@ -42,12 +42,17 @@
                 <DataGridTextColumn Width="1*" Header="Stop entry" Binding="{Binding Stop}"/>
                 <DataGridTextColumn Width="1*" Header="Size" Binding="{Binding Size}"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="unloadModuleBtn" Header="Unload module" Command="{Binding UnloadModuleCommand}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
-        <TextBox x:Name="SPRXPathTextBox" Grid.Column="0" Grid.Row="1" Margin="3"
+        <TextBox x:Name="SPRXPathTextBox" Grid.Column="0" Grid.Row="2" Margin="3"
                  mah:TextBoxHelper.Watermark="Drop your SPRX file here ..." Text="{Binding SPRXPath, UpdateSourceTrigger=PropertyChanged}"
                  AllowDrop="True" PreviewDragOver="TextBox_PreviewDragOver" Drop="TextBox_Drop"/>
-        <Button x:Name="BrowseSPRXButton" Grid.Column="1" Grid.Row="1" Content="...." Command="{Binding BrowseSPRXCommand}"/>
-        <Button x:Name="LoadSPRXButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Load sprx file" Command="{Binding LoadSPRXCommand}"/>
-        <Button x:Name="RefreshModulesButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Refresh modules" Command="{Binding RefreshModulesCommand}"/>
+        <Button x:Name="BrowseSPRXButton" Grid.Column="1" Grid.Row="2" Content="...." Command="{Binding BrowseSPRXCommand}"/>
+        <Button x:Name="LoadSPRXButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Load sprx file" Command="{Binding LoadSPRXCommand}"/>
+        <Button x:Name="RefreshModulesButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Refresh modules" Command="{Binding RefreshModulesCommand}"/>
     </Grid>
 </UserControl>
