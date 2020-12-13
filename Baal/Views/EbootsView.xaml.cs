@@ -13,7 +13,7 @@ namespace Baal.Views
     {
         private string[] file;
 
-        public EbootsView(MainViewModel mainViewModel, TMAPI ps3)
+        public EbootsView(MainViewModel mainViewModel, PS3API ps3)
         {
             ViewModel = new EbootsViewModel(DialogCoordinator.Instance, mainViewModel, ps3);
             InitializeComponent();

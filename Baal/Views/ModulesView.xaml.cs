@@ -13,7 +13,7 @@ namespace Baal.Views
     {
         private string[] file;
 
-        public ModulesView(MainViewModel mainViewModel, TMAPI ps3)
+        public ModulesView(MainViewModel mainViewModel, PS3API ps3)
         {
             ViewModel = new ModulesViewModel(DialogCoordinator.Instance, mainViewModel, ps3);
             InitializeComponent();

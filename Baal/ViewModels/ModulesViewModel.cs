@@ -1,6 +1,7 @@
 ﻿using Baal.Models;
 using IgrisLib;
 using IgrisLib.Mvvm;
+using IgrisLib.NET;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Win32;
 using System.Collections.ObjectModel;
@@ -15,7 +16,7 @@ namespace Baal.ViewModels
 
         public MainViewModel MainViewModel { get; }
 
-        public TMAPI PS3 { get; }
+        public PS3API PS3 { get; }
 
         public ObservableCollection<PS3Module> Modules { get => GetValue(() => Modules); set => SetValue(() => Modules, value); }
 
@@ -31,7 +32,7 @@ namespace Baal.ViewModels
 
         public DelegateCommand UnloadModuleCommand { get; }
 
-        public ModulesViewModel(IDialogCoordinator instance, MainViewModel mainViewModel, TMAPI ps3)
+        public ModulesViewModel(IDialogCoordinator instance, MainViewModel mainViewModel, PS3API ps3)
         {
             dialogCoordinator = instance;
             MainViewModel = mainViewModel;
@@ -97,11 +98,11 @@ namespace Baal.ViewModels
                 {
                     modules.Add(new PS3Module
                     {
-                        Name = PS3.GetModuleName(module),
+                        Name = PS3.TMAPI.GetModuleName(module),
                         ID = $"0x{module:X}",
-                        Start = $"0x{PS3.GetModuleStartAddress(module):X} ",
-                        Stop = $"0x{PS3.GetModuleStopAddress(module):X} ",
-                        Size = $"0x{PS3.GetModuleSize(module):X}",
+                        Start = $"0x{PS3.TMAPI.GetModuleStartAddress(module):X} ",
+                        Stop = $"0x{PS3.TMAPI.GetModuleStopAddress(module):X} ",
+                        Size = $"0x{PS3.TMAPI.GetModuleSize(module):X}",
                     });
                 }
             }

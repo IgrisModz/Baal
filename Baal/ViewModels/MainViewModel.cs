@@ -1,5 +1,6 @@
 ﻿using Baal.Views;
 using IgrisLib;
+using IgrisLib.NET;
 using IgrisLib.Mvvm;
 using MahApps.Metro.Controls.Dialogs;
 using System.IO;
@@ -12,9 +13,9 @@ namespace Baal.ViewModels
         private bool backgroundFunctionsEnabled = true, backgroundFunctionsRefreshEnabled;
         private readonly IDialogCoordinator dialogCoordinator;
 
-        public TMAPI PS3 { get; }
+        public PS3API PS3 { get; }
 
-        internal PS3RPC PS3RPC { get; }
+        public PS3RPC PS3RPC { get; }
 
         public Thread BackgroundFunctionsThread { get; }
 
@@ -37,8 +38,8 @@ namespace Baal.ViewModels
         public MainViewModel(IDialogCoordinator instance)
         {
             dialogCoordinator = instance;
-            PS3 = new TMAPI();
-            PS3RPC = new PS3RPC(PS3);
+            PS3 = new PS3API(new TMAPI());
+            PS3RPC = new PS3RPC(PS3.TMAPI);
             ModulesView = new ModulesView(this, PS3);
             SprxView = new SprxView(this);
             EbootsView = new EbootsView(this, PS3);
@@ -138,7 +139,7 @@ namespace Baal.ViewModels
             {
                 if (backgroundFunctionsRefreshEnabled)
                 {
-                    if (PS3.GetStatus() == "Connected")
+                    if (PS3.GetConnected())
                     {
                         IsConnected = true;
                         if (PS3.GetAttached())

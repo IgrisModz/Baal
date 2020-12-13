@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <system:String x:Key="connect">Connection</system:String>
+    <system:String x:Key="refresh">Refresh</system:String>
+    <system:String x:Key="errorSelect">You need to select a console first.</system:String>
+    <system:String x:Key="errorSelectTitle">Select a console.</system:String>
+    <system:String x:Key="selectGrid">Select a console within this grid.</system:String>
+    <system:String x:Key="selectedLbl">Selected :</system:String>
+    <system:String x:Key="formTitle">Select a console...</system:String>
+    <system:String x:Key="noConsole">None consoles available, run CCAPI Manager (v2.60/2.70/2.80+) and add a new console.</system:String>
+    <system:String x:Key="noConsoleTitle">None console available.</system:String>
+    <system:String x:Key="impossibleLoadCCAPI">Impossible de charger CCAPI 2.60/2.70/2.80/+</system:String>
+    <system:String x:Key="impossibleLoadCCAPITitle">CCAPI.dll cannot be loaded</system:String>
+    <system:String x:Key="ccapiIsntCompatible">This CCAPI.dll is not compatible"</system:String>
+    <system:String x:Key="invalidCCAPIFolder">Invalid CCAPI folder, please re-install it.</system:String>
+    <system:String x:Key="ccapiNotFound">CCAPI.dll not found.</system:String>
+    <system:String x:Key="ccapiNotInstalled">You need to install CCAPI 2.60/2.70/2.80/+ to use this library.</system:String>
+    <system:String x:Key="ccapiNotInstalledTitle">CCAPI not installed</system:String>
+</ResourceDictionary>

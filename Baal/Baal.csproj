@@ -41,6 +41,9 @@
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.4.0\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="IgrisLib.MahApps.Metro">
+      <HintPath>..\..\IgrisLib\IgrisLib.MahApps.Metro\bin\Debug\IgrisLib.MahApps.Metro.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.4.1\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -98,11 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="IgrisLib\Mvvm\DelegateCommand.cs" />
-    <Compile Include="IgrisLib\Mvvm\ViewModelBase.cs" />
-    <Compile Include="IgrisLib\PS3RPC.cs" />
-    <Compile Include="IgrisLib\TMAPI.cs" />
-    <Compile Include="IgrisLib\NET\TMAPI_NET.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

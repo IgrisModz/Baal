@@ -21,7 +21,7 @@ namespace Baal.ViewModels
 
         public MainViewModel MainViewModel { get; }
 
-        public TMAPI PS3 { get; }
+        public PS3API PS3 { get; }
 
         public string SearchText
         {
@@ -109,7 +109,7 @@ namespace Baal.ViewModels
 
         public DelegateCommand UploadEBOOTCommand { get; }
 
-        public EbootsViewModel(IDialogCoordinator instance, MainViewModel mainViewModel, TMAPI ps3)
+        public EbootsViewModel(IDialogCoordinator instance, MainViewModel mainViewModel, PS3API ps3)
         {
             dialogCoordinator = instance;
             MainViewModel = mainViewModel;
@@ -226,7 +226,7 @@ namespace Baal.ViewModels
             string fileName = Path.GetFileName(sourcePath);
             if (Directory.Exists(sourcePath.Replace(fileName, "")))
             {
-                IgrisLib.NET.PS3TMAPI.TCPIPConnectProperties connectProperties = PS3.GetConnectionInfo();
+                IgrisLib.NET.PS3TMAPI.TCPIPConnectProperties connectProperties = PS3.TMAPI.GetConnectionInfo();
                 //Create FTP request
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"ftp://{connectProperties.IPAddress}{(EBOOTDestinationPath.Substring(1, 1) == "/" ? "" : "/")}{EBOOTDestinationPath}{(EBOOTDestinationPath.Substring(EBOOTDestinationPath.Length - 1) == "/" ? "" : "/")}{fileName}");
 
