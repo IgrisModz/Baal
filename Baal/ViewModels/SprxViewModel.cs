@@ -32,8 +32,8 @@ namespace Baal.ViewModels
 
                 foreach (SPRX sprx in SprxCollectionSave)
                 {
-                    var props = sprx.GetType().GetProperties();
-                    foreach (var prop in props)
+                    PropertyInfo[] props = sprx.GetType().GetProperties();
+                    foreach (PropertyInfo prop in props)
                     {
                         if (Convert.ToString(prop.GetValue(sprx, null)).ToLower().Contains(search.ToLower()))
                         {
@@ -123,21 +123,21 @@ namespace Baal.ViewModels
 
         private bool CanExecuteSelectSPRX()
         {
-            return SelectedSprx != null && SprxCollection.Where(x => x.IsSelected).Count() == 1;
+            return SelectedSprx != null && SprxCollection.Count(x => x.IsSelected) == 1;
         }
 
         private void GetSPRX()
         {
             ObservableCollection<SPRX> filesCollection = new ObservableCollection<SPRX>();
             string path = $@"{AppDomain.CurrentDomain.BaseDirectory}Files\SPRX";
-            var folder = new DirectoryInfo(path);
-            var files = folder.GetFiles("*sprx", SearchOption.AllDirectories);
-            foreach (var file in files)
+            DirectoryInfo folder = new DirectoryInfo(path);
+            FileInfo[] files = folder.GetFiles("*sprx", SearchOption.AllDirectories);
+            foreach (FileInfo file in files)
             {
-                var icon = Icon.ExtractAssociatedIcon(file.FullName);
-                var bmp = icon.ToBitmap();
-                var name = file.Name.Length > 13 ? $"{file.Name.Substring(0, 13)}..." : file.Name;
-                var game = Path.GetFileNameWithoutExtension(Directory.GetParent(file.FullName).ToString());
+                Icon icon = Icon.ExtractAssociatedIcon(file.FullName);
+                Bitmap bmp = icon.ToBitmap();
+                string name = file.Name.Length > 13 ? $"{file.Name.Substring(0, 13)}..." : file.Name;
+                string game = Path.GetFileNameWithoutExtension(Directory.GetParent(file.FullName).ToString());
                 filesCollection.Add(new SPRX() { Game = game, Name = name, Path = file.FullName, FileThumbnail = BitmapConversion.BitmapToBitmapSource(bmp) });
             }
             ICollectionView view = CollectionViewSource.GetDefaultView(filesCollection);
@@ -172,25 +172,36 @@ namespace Baal.ViewModels
                     Directory.CreateDirectory(targetPath);
                 }
                 if (Directory.Exists(sourcePath.Replace(fileName, "")))
+                {
                     File.Copy(sourcePath, targetPath + fileName);
+                }
                 else
+                {
                     await dialogCoordinator.ShowMessageAsync(this, "Failed...", "This file doesn't exist");
+                }
             }
             else
+            {
                 await dialogCoordinator.ShowMessageAsync(this, "Error", "File Path is null");
+            }
+
             GetSPRX();
         }
 
         private async void DeleteSPRX()
         {
-            foreach (var eboot in SprxCollection.Where(x => x.IsSelected))
+            foreach (SPRX eboot in SprxCollection.Where(x => x.IsSelected))
             {
                 string sourcePath = SelectedSprx.Path;
                 string fileName = Path.GetFileName(sourcePath);
                 if (Directory.Exists(sourcePath.Replace(fileName, "")))
+                {
                     File.Delete(sourcePath);
+                }
                 else
+                {
                     await dialogCoordinator.ShowMessageAsync(this, "Failed...", "This file doesn't exist");
+                }
             }
             GetSPRX();
         }

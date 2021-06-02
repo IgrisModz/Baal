@@ -11,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Windows.Data;
 
 namespace Baal.ViewModels
@@ -35,8 +36,8 @@ namespace Baal.ViewModels
 
                 foreach (EBOOT eboot in EbootsCollectionSave)
                 {
-                    var props = eboot.GetType().GetProperties();
-                    foreach (var prop in props)
+                    PropertyInfo[] props = eboot.GetType().GetProperties();
+                    foreach (PropertyInfo prop in props)
                     {
                         if (Convert.ToString(prop.GetValue(eboot, null)).ToLower().Contains(search.ToLower()))
                         {
@@ -147,22 +148,22 @@ namespace Baal.ViewModels
 
         private bool CanExecuteUploadEBOOT()
         {
-            return SelectedEboot != null && EbootsCollection.Where(x => x.IsSelected).Count() == 1 && MainViewModel.IsConnected;
+            return SelectedEboot != null && EbootsCollection.Count(x => x.IsSelected) == 1 && MainViewModel.IsConnected;
         }
 
         private void GetEBOOTS()
         {
             ObservableCollection<EBOOT> filesCollection = new ObservableCollection<EBOOT>();
             string path = $@"{AppDomain.CurrentDomain.BaseDirectory}Files\EBOOTS";
-            var folder = new DirectoryInfo(path);
-            var files = folder.GetFiles("*bin", SearchOption.AllDirectories);
-            foreach (var file in files)
+            DirectoryInfo folder = new DirectoryInfo(path);
+            FileInfo[] files = folder.GetFiles("*bin", SearchOption.AllDirectories);
+            foreach (FileInfo file in files)
             {
-                var icon = Icon.ExtractAssociatedIcon(file.FullName);
-                var bmp = icon.ToBitmap();
-                var name = file.Name.Length > 13 ? $"{file.Name.Substring(0, 13)}..." : file.Name;
-                var mode = Path.GetFileNameWithoutExtension(Directory.GetParent(file.FullName).ToString());
-                var game = Path.GetFileNameWithoutExtension(Directory.GetParent(Directory.GetParent(file.FullName).ToString()).ToString());
+                Icon icon = Icon.ExtractAssociatedIcon(file.FullName);
+                Bitmap bmp = icon.ToBitmap();
+                string name = file.Name.Length > 13 ? $"{file.Name.Substring(0, 13)}..." : file.Name;
+                string mode = Path.GetFileNameWithoutExtension(Directory.GetParent(file.FullName).ToString());
+                string game = Path.GetFileNameWithoutExtension(Directory.GetParent(Directory.GetParent(file.FullName).ToString()).ToString());
                 filesCollection.Add(new EBOOT() { Game = game, Mode = mode, Name = name, Path = file.FullName, FileThumbnail = BitmapConversion.BitmapToBitmapSource(bmp) });
             }
             ICollectionView view = CollectionViewSource.GetDefaultView(filesCollection);
@@ -182,7 +183,9 @@ namespace Baal.ViewModels
             };
 
             if (openFileDialog.ShowDialog() == true)
+            {
                 EBOOTPath = openFileDialog.FileName;
+            }
         }
 
         private async void AddEBOOT()
@@ -197,25 +200,36 @@ namespace Baal.ViewModels
                     Directory.CreateDirectory(targetPath);
                 }
                 if (Directory.Exists(sourcePath.Replace(fileName, "")))
+                {
                     File.Copy(sourcePath, targetPath + fileName);
+                }
                 else
+                {
                     await dialogCoordinator.ShowMessageAsync(this, "Failed...", "This file doesn't exist");
+                }
             }
             else
+            {
                 await dialogCoordinator.ShowMessageAsync(this, "Error", "File Path is null");
+            }
+
             GetEBOOTS();
         }
 
         private async void DeleteEBOOT()
         {
-            foreach (var eboot in EbootsCollection.Where(x => x.IsSelected))
+            foreach (EBOOT eboot in EbootsCollection.Where(x => x.IsSelected))
             {
                 string sourcePath = eboot.Path;
                 string fileName = Path.GetFileName(sourcePath);
                 if (Directory.Exists(sourcePath.Replace(fileName, "")))
+                {
                     File.Delete(sourcePath);
+                }
                 else
+                {
                     await dialogCoordinator.ShowMessageAsync(this, "Failed...", "This file doesn't exist");
+                }
             }
             GetEBOOTS();
         }
@@ -250,7 +264,9 @@ namespace Baal.ViewModels
                 await dialogCoordinator.ShowMessageAsync(this, "Success...", "This file has been uploaded");
             }
             else
+            {
                 await dialogCoordinator.ShowMessageAsync(this, "Failed...", "This file doesn't exist");
+            }
         }
     }
 }

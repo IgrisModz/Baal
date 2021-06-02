@@ -73,26 +73,33 @@ namespace Baal.ViewModels
             };
 
             if (openFileDialog.ShowDialog() == true)
+            {
                 SPRXPath = openFileDialog.FileName;
+            }
         }
 
         private async void LoadSPRX()
         {
             string modulePath = SPRXPath;
             if (!modulePath.Contains("hdd0"))
+            {
                 modulePath = "/host_root/" + SPRXPath;
+            }
+
             modulePath.Replace("\\", "/");
             ulong error = PS3RPC.LoadModule(modulePath);
             Thread.Sleep(150);
             RefreshModules();
             if (error != 0x0)
+            {
                 await dialogCoordinator.ShowMessageAsync(this, "Error...", $"Load Module Error: 0x{error:X}");
+            }
         }
 
         private void RefreshModules()
         {
             ObservableCollection<PS3Module> modules = new ObservableCollection<PS3Module>();
-            foreach (var module in PS3RPC.GetModules())
+            foreach (uint module in PS3RPC.GetModules())
             {
                 if (module != 0x0)
                 {
@@ -118,7 +125,9 @@ namespace Baal.ViewModels
             Thread.Sleep(150);
             RefreshModules();
             if (error != 0x0)
+            {
                 await dialogCoordinator.ShowMessageAsync(this, "Error...", $"Unload Module Error: 0x{error:X}");
+            }
         }
     }
 }
