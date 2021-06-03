@@ -33,6 +33,10 @@ namespace Baal.ViewModels
 
         public string CurrentGame { get => GetValue(() => CurrentGame); set => SetValue(() => CurrentGame, value); }
 
+        public string APIName { get => GetValue(() => APIName); set => SetValue(() => APIName, value); }
+
+        public DelegateCommand<bool> ApiCommand { get; }
+
         public DelegateCommand ConnectCommand { get; }
 
         public MainViewModel(IDialogCoordinator instance)
@@ -43,8 +47,10 @@ namespace Baal.ViewModels
             ModulesView = new ModulesView(this, PS3);
             SprxView = new SprxView(this);
             EbootsView = new EbootsView(this, PS3);
+            ApiCommand = new DelegateCommand<bool>(p => ChangeApi(p));
             ConnectCommand = new DelegateCommand(Connect);
             CreateDirectory();
+            APIName = "TMAPI";
             Status = "Connected to any ps3!";
             BackgroundFunctionsThread = new Thread(() => BackgroundFunctions()) { IsBackground = true };
             BackgroundFunctionsThread?.Start();
@@ -60,6 +66,12 @@ namespace Baal.ViewModels
             backgroundFunctionsEnabled = false;
             BackgroundFunctionsThread?.Abort();
             Dispose();
+        }
+
+        private void ChangeApi(bool isChecked)
+        {
+            APIName = isChecked ? "PS3MAPI" : "TMAPI";
+            PS3.ChangeAPI(isChecked ? new PS3MAPI() : (IApi)new TMAPI());
         }
 
         private async void Connect()

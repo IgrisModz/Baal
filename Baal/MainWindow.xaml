@@ -6,8 +6,6 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                  xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-                 xmlns:viewModels="clr-namespace:Baal.ViewModels"
-                 xmlns:local="clr-namespace:Baal"
                  mc:Ignorable="d"
                  dialog:DialogParticipation.Register="{Binding}"
                  WindowStartupLocation="CenterScreen"
@@ -20,6 +18,12 @@
     </mah:MetroWindow.Resources>
     <mah:MetroWindow.LeftWindowCommands>
         <mah:WindowCommands ShowLastSeparator="False">
+            <ToggleButton x:Name="ApiButton" Command="{Binding ApiCommand}" CommandParameter="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterialDesign x:Name="ApiButtonIcon" Kind="SettingsEthernet"/>
+                    <TextBlock x:Name="ApiButtonText" Margin="3 0 0 0" Text="{Binding APIName}"/>
+                </StackPanel>
+            </ToggleButton>
             <Button x:Name="ConnectBtn" Command="{Binding ConnectCommand}">
                 <StackPanel Orientation="Horizontal">
                     <iconPacks:PackIconMaterialDesign x:Name="ConnectButtonIcon" Kind="CastConnected"/>
