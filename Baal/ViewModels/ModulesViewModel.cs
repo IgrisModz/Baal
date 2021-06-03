@@ -149,7 +149,7 @@ namespace Baal.ViewModels
             ulong error;
             if (PS3.GetCurrentAPI().GetType() == typeof(TMAPI))
                 error = PS3RPC.UnloadModule(result);
-            else error = PS3.PS3MAPI.UnloadModule(result);
+            else error = PS3.PS3MAPI.UnloadModule((int)result);
             Thread.Sleep(150);
             RefreshModules();
             if (error != 0x0)
