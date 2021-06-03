@@ -240,9 +240,7 @@ namespace Baal.ViewModels
             string fileName = Path.GetFileName(sourcePath);
             if (Directory.Exists(sourcePath.Replace(fileName, "")))
             {
-                IgrisLib.NET.PS3TMAPI.TCPIPConnectProperties connectProperties = PS3.TMAPI.GetConnectionInfo();
-                //Create FTP request
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"ftp://{connectProperties.IPAddress}{(EBOOTDestinationPath.Substring(1, 1) == "/" ? "" : "/")}{EBOOTDestinationPath}{(EBOOTDestinationPath.Substring(EBOOTDestinationPath.Length - 1) == "/" ? "" : "/")}{fileName}");
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create($"ftp://{PS3.TargetIp}{(EBOOTDestinationPath.Substring(1, 1) == "/" ? "" : "/")}{EBOOTDestinationPath}{(EBOOTDestinationPath.Substring(EBOOTDestinationPath.Length - 1) == "/" ? "" : "/")}{fileName}");
 
                 request.Method = WebRequestMethods.Ftp.UploadFile;
                 request.Credentials = new NetworkCredential("", "");
