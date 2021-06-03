@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              mc:Ignorable="d"
@@ -79,7 +80,12 @@
                 </GroupStyle>
             </ListBox.GroupStyle>
         </ListBox>
-        <Button x:Name="RefreshEBOOTSButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Refresh list" Command="{Binding GetEBOOTSCommand}"/>
+        <Button x:Name="RefreshEBOOTSButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding GetEBOOTSCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="RefreshEBOOTSButtonIcon" Kind="Refresh"/>
+                <TextBlock x:Name="RefreshEBOOTSButtonText" Margin="3 0 0 0" Text="Refresh list"/>
+            </StackPanel>
+        </Button>
         <TextBox x:Name="EBOOTPathTextBox" Grid.Column="0" Grid.Row="3"
                  mah:TextBoxHelper.Watermark="Drop your EBOOT file here ..."
                  Text="{Binding EBOOTPath, UpdateSourceTrigger=PropertyChanged}"
@@ -90,15 +96,30 @@
                 <ComboBox x:Name="GameListComboBox" Margin="3" ItemsSource="{Binding EBOOTGameList}" SelectedItem="{Binding SelectedGame}"/>
                 <ComboBox x:Name="ModeListComboBox" Margin="3" ItemsSource="{Binding EBOOTModeList}" SelectedItem="{Binding SelectedMode}"/>
             </UniformGrid>
-            <Button x:Name="AddSPRXButton" Content="Add file to library" Command="{Binding AddEBOOTCommand}"/>
+            <Button x:Name="AddSPRXButton" Command="{Binding AddEBOOTCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterialDesign x:Name="AddSPRXButtonIcon" Kind="LibraryAdd"/>
+                    <TextBlock x:Name="AddSPRXButtonText" Margin="3 0 0 0" Text="Add file to library"/>
+                </StackPanel>
+            </Button>
         </UniformGrid>
-        <Button x:Name="DeleteEBOOTButton" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="Delete eboot" Command="{Binding DeleteEBOOTCommand}"/>
+        <Button x:Name="DeleteEBOOTButton" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Command="{Binding DeleteEBOOTCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="DeleteEBOOTButtonIcon" Kind="Delete"/>
+                <TextBlock x:Name="DeleteEBOOTButtonText" Margin="3 0 0 0" Text="Delete eboot"/>
+            </StackPanel>
+        </Button>
         <UniformGrid Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Columns="2">
             <DockPanel>
                 <Label x:Name="DestinationEBOOTLabel" Margin="3" Content="Destination:"/>
                 <TextBox Text="{Binding EBOOTDestinationPath, UpdateSourceTrigger=PropertyChanged}"/>
             </DockPanel>
-        <Button x:Name="UploadEBOOTButton" Content="Upload eboot" Command="{Binding UploadEBOOTCommand}"/>
+            <Button x:Name="UploadEBOOTButton" Command="{Binding UploadEBOOTCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterialDesign x:Name="UploadEBOOTButtonIcon" Kind="Send"/>
+                    <TextBlock x:Name="UploadEBOOTButtonText" Margin="3 0 0 0" Text="Upload eboot"/>
+                </StackPanel>
+            </Button>
         </UniformGrid>
     </Grid>
 </UserControl>

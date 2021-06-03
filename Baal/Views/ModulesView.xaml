@@ -45,15 +45,29 @@
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem x:Name="unloadModuleBtn" Header="Unload module" Command="{Binding UnloadModuleCommand}"/>
+                    <MenuItem x:Name="UnloadModuleButton" Header="Unload module" Command="{Binding UnloadModuleCommand}">
+                        <MenuItem.Icon>
+                            <iconPacks:PackIconMaterialDesign Kind="Unarchive"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
+        <Button x:Name="RefreshModulesButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Command="{Binding RefreshModulesCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="RefreshModulesButtonIcon" Kind="Refresh"/>
+                <TextBlock x:Name="RefreshModulesButtonText" Margin="3 0 0 0" Text="Refresh modules"/>
+            </StackPanel>
+        </Button>
         <TextBox x:Name="SPRXPathTextBox" Grid.Column="0" Grid.Row="2" Margin="3"
                  mah:TextBoxHelper.Watermark="Drop your SPRX file here ..." Text="{Binding SPRXPath, UpdateSourceTrigger=PropertyChanged}"
                  AllowDrop="True" PreviewDragOver="TextBox_PreviewDragOver" Drop="TextBox_Drop"/>
         <Button x:Name="BrowseSPRXButton" Grid.Column="1" Grid.Row="2" Content="...." Command="{Binding BrowseSPRXCommand}"/>
-        <Button x:Name="LoadSPRXButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Content="Load sprx file" Command="{Binding LoadSPRXCommand}"/>
-        <Button x:Name="RefreshModulesButton" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Content="Refresh modules" Command="{Binding RefreshModulesCommand}"/>
+        <Button x:Name="LoadSPRXButton" Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding LoadSPRXCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="LoadSPRXFileButtonIcon" Kind="Archive"/>
+                <TextBlock x:Name="LoadSPRXFileButtonText" Margin="3 0 0 0" Text="Load sprx file"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

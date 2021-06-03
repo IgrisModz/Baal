@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
              mc:Ignorable="d" 
@@ -84,7 +85,12 @@
                 </GroupStyle>
             </ListBox.GroupStyle>
         </ListBox>
-        <Button x:Name="RefreshSPRXButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Content="Refresh list" Command="{Binding GetSPRXCommand}"/>
+        <Button x:Name="RefreshSPRXButton" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding GetSPRXCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="RefreshSPRXButtonIcon" Kind="Refresh"/>
+                <TextBlock x:Name="RefreshSPRXButtonText" Margin="3 0 0 0" Text="Refresh list"/>
+            </StackPanel>
+        </Button>
         <TextBox x:Name="SPRXPathTextBox" Grid.Column="0" Grid.Row="3"
                  mah:TextBoxHelper.Watermark="Drop your SPRX file here ..."
                  Text="{Binding SPRXPath, UpdateSourceTrigger=PropertyChanged}"
@@ -92,8 +98,18 @@
         <Button x:Name="BrowseSPRXButton" Grid.Column="1" Grid.Row="3" Content="...." Command="{Binding BrowseSPRXCommand}"/>
         <UniformGrid Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Columns="2">
             <ComboBox x:Name="GameListComboBox" Margin="3" ItemsSource="{Binding SPRXGameList}" SelectedItem="{Binding SelectedGame}"/>
-            <Button x:Name="AddSPRXButton" Content="Add file to library" Command="{Binding AddSPRXCommand}"/>
+            <Button x:Name="AddSPRXButton" Command="{Binding AddSPRXCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <iconPacks:PackIconMaterialDesign x:Name="AddSPRXButtonIcon" Kind="LibraryAdd"/>
+                    <TextBlock x:Name="AddSPRXButtonText" Margin="3 0 0 0" Text="Add file to library"/>
+                </StackPanel>
+            </Button>
         </UniformGrid>
-        <Button x:Name="DeleteSPRXButton" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Content="Delete sprx" Command="{Binding DeleteSPRXCommand}"/>
+        <Button x:Name="DeleteSPRXButton" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" Command="{Binding DeleteSPRXCommand}">
+            <StackPanel Orientation="Horizontal">
+                <iconPacks:PackIconMaterialDesign x:Name="DeleteSPRXButtonIcon" Kind="Delete"/>
+                <TextBlock x:Name="DeleteSPRXButtonText" Margin="3 0 0 0" Text="Delete sprx"/>
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>
