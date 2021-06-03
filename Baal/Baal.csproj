@@ -81,7 +81,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BitmapConversion.cs" />
-    <Compile Include="Converters\MultiCommandParametersConverter.cs" />
     <Compile Include="Models\EBOOT.cs" />
     <Compile Include="Models\PS3Module.cs" />
     <Compile Include="Models\SPRX.cs" />
