@@ -6,6 +6,8 @@
 
         public string ID { get; set; }
 
+        public string Path { get; set; }
+
         public string Start { get; set; }
 
         public string Stop { get; set; }

@@ -87,7 +87,10 @@ namespace Baal.ViewModels
             }
 
             modulePath.Replace("\\", "/");
-            ulong error = PS3RPC.LoadModule(modulePath);
+            ulong error;
+            if (PS3.GetCurrentAPI().GetType() == typeof(TMAPI))
+                error = PS3RPC.LoadModule(modulePath);
+            else error = PS3.PS3MAPI.LoadModule(modulePath);
             Thread.Sleep(150);
             RefreshModules();
             if (error != 0x0)
@@ -99,18 +102,40 @@ namespace Baal.ViewModels
         private void RefreshModules()
         {
             ObservableCollection<PS3Module> modules = new ObservableCollection<PS3Module>();
-            foreach (uint module in PS3RPC.GetModules())
+            if (PS3.GetCurrentAPI().GetType() == typeof(TMAPI))
             {
-                if (module != 0x0)
+                foreach (uint module in PS3RPC.GetModules())
                 {
-                    modules.Add(new PS3Module
+                    if (module != 0x0)
                     {
-                        Name = PS3.TMAPI.GetModuleName(module),
-                        ID = $"0x{module:X}",
-                        Start = $"0x{PS3.TMAPI.GetModuleStartAddress(module):X} ",
-                        Stop = $"0x{PS3.TMAPI.GetModuleStopAddress(module):X} ",
-                        Size = $"0x{PS3.TMAPI.GetModuleSize(module):X}",
-                    });
+                        modules.Add(new PS3Module
+                        {
+                            Name = PS3.TMAPI.GetModuleName(module),
+                            ID = $"0x{module:X}",
+                            Path = "N/A",
+                            Start = $"0x{PS3.TMAPI.GetModuleStartAddress(module):X} ",
+                            Stop = $"0x{PS3.TMAPI.GetModuleStopAddress(module):X} ",
+                            Size = $"0x{PS3.TMAPI.GetModuleSize(module):X}",
+                        });
+                    }
+                }
+            }
+            else
+            {
+                foreach(int module in PS3.PS3MAPI.GetModules())
+                {
+                    if (module != 0x0)
+                    {
+                        modules.Add(new PS3Module
+                        {
+                            Name = PS3.PS3MAPI.GetModuleName(module),
+                            ID = $"0x{module:X}",
+                            Path = PS3.PS3MAPI.GetModuleFilename(module),
+                            Start = "N/A",
+                            Stop = "N/A",
+                            Size = "N/A"
+                        });
+                    }
                 }
             }
             Modules = modules;
@@ -121,7 +146,10 @@ namespace Baal.ViewModels
             uint.TryParse(SelectedModule.ID.Substring(2), NumberStyles.HexNumber,
                     CultureInfo.CurrentCulture,
                     out uint result);
-            ulong error = PS3RPC.UnloadModule(result);
+            ulong error;
+            if (PS3.GetCurrentAPI().GetType() == typeof(TMAPI))
+                error = PS3RPC.UnloadModule(result);
+            else error = PS3.PS3MAPI.UnloadModule(result);
             Thread.Sleep(150);
             RefreshModules();
             if (error != 0x0)
