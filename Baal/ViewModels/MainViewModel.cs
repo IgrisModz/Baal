@@ -103,25 +103,19 @@ namespace Baal.ViewModels
 			if (!Directory.Exists("Files"))
             {
                 Directory.CreateDirectory(@"Files\SPRX\Advanced Warfare");
-                Directory.CreateDirectory(@"Files\SPRX\Battlefield 3");
                 Directory.CreateDirectory(@"Files\SPRX\Battlefield 4");
-                Directory.CreateDirectory(@"Files\SPRX\Battlefield Hardline");
                 Directory.CreateDirectory(@"Files\SPRX\Black Ops 1");
                 Directory.CreateDirectory(@"Files\SPRX\Black Ops 2");
                 Directory.CreateDirectory(@"Files\SPRX\Black Ops 3");
                 Directory.CreateDirectory(@"Files\SPRX\Ghosts");
-                Directory.CreateDirectory(@"Files\SPRX\GTA IV");
                 Directory.CreateDirectory(@"Files\SPRX\GTA V");
-                Directory.CreateDirectory(@"Files\SPRX\Minecraft");
                 Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 1");
                 Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 2");
                 Directory.CreateDirectory(@"Files\SPRX\Modern Warfare 3");
                 Directory.CreateDirectory(@"Files\SPRX\World at War");
                 Directory.CreateDirectory(@"Files\EBOOTS\Advanced Warfare\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Advanced Warfare\ZM");
-                Directory.CreateDirectory(@"Files\EBOOTS\Battlefield 3\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Battlefield 4\MP");
-                Directory.CreateDirectory(@"Files\EBOOTS\Battlefield Hardline\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 1\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 1\ZM");
                 Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 2\MP");
@@ -130,9 +124,7 @@ namespace Baal.ViewModels
                 Directory.CreateDirectory(@"Files\EBOOTS\Black Ops 3\ZM");
                 Directory.CreateDirectory(@"Files\EBOOTS\Ghosts\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Ghosts\SP");
-                Directory.CreateDirectory(@"Files\EBOOTS\GTA IV\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\GTA V\MP");
-                Directory.CreateDirectory(@"Files\EBOOTS\Minecraft\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 1\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 2\MP");
                 Directory.CreateDirectory(@"Files\EBOOTS\Modern Warfare 2\SP");
