@@ -50,7 +50,7 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <Image Source="{Binding FileThumbnail}" Width="80" Height="80" Stretch="Uniform" Margin="15" Cursor="Hand"/>
+                        <Image Source="{Binding FileThumbnail}" Width="40" Height="40" Stretch="Uniform" Margin="15" Cursor="Hand"/>
                         <TextBlock Margin="3" Text="{Binding Name}" HorizontalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
